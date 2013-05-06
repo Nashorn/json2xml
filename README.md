@@ -34,7 +34,6 @@ json2xml.convert({
 </pre>
 
 * OUTPUT:
-<pre>
 <code>
 <xml>
 	<name>Jayson Smath</name>
@@ -59,7 +58,7 @@ json2xml.convert({
 	</kids>
 </xml>
 </code>
-</pre>
+
 # License
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License.
 
