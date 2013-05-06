@@ -18,6 +18,48 @@ The json2xml.convert function needs 2 parameters :
 *  The json object (called "obj" in the example).  
 *  The xml root name ("data" in the example).
 
+* USAGE:
+<pre>
+json2xml.convert({
+	name:"Jayson Smath", 
+	address:{
+		street:"888 Oakhills Road",
+		city: "Somewhere",
+		state: "N Carolina",
+		zip:34500
+	}, 
+	kids:[
+		{name:"isaiah", age:6, phone:["abc"]},
+		{name:"geo", age:19}
+	]},
+"xml");
+</pre>
+
+* OUTPUT:
+<pre>
+<xml>
+	<name>Jayson Smath</name>
+	<address>
+		<street>888 Oakhills Road</street>
+		<city>Somewhere</city>
+		<state>N Carolina</state>
+		<zip>34500</zip>
+	</address>
+	<kids>
+		<item>
+			<name>isaiah</name>
+			<age>6</age>
+			<phone>
+				<item>abc</item>
+			</phone>
+		</item>
+		<item>
+			<name>geo</name>
+			<age>19</age>
+		</item>
+	</kids>
+</xml>
+</pre>
 # License
 This plugin is licensed under the terms of the WTF Public License (see [here](http://en.wikipedia.org/wiki/WTFPL) and [here](http://sam.zoy.org/wtfpl/)) :
 <pre>
@@ -37,6 +79,5 @@ This plugin is licensed under the terms of the WTF Public License (see [here](ht
 </pre>
 
 # Contact
-You can contact me at siegfried.ehretATgmail.com
-(replace AT with @)
-Please write "json2xml" or something in your subject.
+You can contact me at jaysmith024ATgmail.com
+(replace AT with @) Please write "json2xml" or something in your subject.
