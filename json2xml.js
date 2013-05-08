@@ -13,19 +13,25 @@ var json2xml = (function (my, undefined) {
   var exports = {
     convert:function(obj, rootname) {
       var xml = "";
-      for (var i in obj) {
-        if(obj.hasOwnProperty(i)){
-          var value = obj[i], type = typeof value;
-          if (value instanceof Array && type == 'object') {
-            for (var sub in value) {
-              xml += exports.convert(value[sub]);
+      if(typeof obj == "object") {
+          for (var i in obj) {
+            if(obj.hasOwnProperty(i)){
+              var value = obj[i], type = typeof value;
+              if (value instanceof Array && type == 'object') {
+                xml += tag(i);
+                for (var j=0; j<=value.length-1; j++) {
+                  xml += tag("item")+exports.convert(value[j])+tag("item",{closing:1});
+                }
+                xml += tag(i,{closing:1})
+              } else if (value instanceof Object && type == 'object') {
+                xml += tag(i)+exports.convert(value)+tag(i,{closing:1});
+              } else {
+                xml += tag(i)+value+tag(i,{closing:1});
+              }
             }
-          } else if (value instanceof Object && type == 'object') {
-            xml += tag(i)+exports.convert(value)+tag(i,{closing:1});
-          } else {
-            xml += tag(i)+value+tag(i,{closing:1});
           }
-        }
+      } else {
+        xml += obj;
       }
       return rootname ? tag(rootname) + xml + tag(rootname,{closing:1}) : xml;
     }
